@@ -1,5 +1,3 @@
-# Simple Redux Production
-
 ### 1.简介
 这是一个React, Redux, React Router, CSS Modules, Icon font, Webpack生成器。
 
@@ -49,3 +47,6 @@
 ```bash
     npm run build
 ```
+=======
+#ssp_partner
+>>>>>>> 0f949cd66d0bf423cfc067cb137d70a19358cb92
