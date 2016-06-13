@@ -11,21 +11,27 @@ function getUrl(path) {
     return `${SERVER_CONFIG.dev}${path}`
 }
 
+const headersConfig = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.token || ''
+}
+
 const http = {
     get: (path, query) => new Promise((resolve, reject) => {
-        fetch(getUrl(path))
-            .then(res => res.json())
-            .then(json => resolve(json))
-            .catch(err => reject(err))
+        fetch(getUrl(path), {
+            method: 'GET',
+            headers: headersConfig
+        })
+        .then(res => res.json())
+        .then(json => resolve(json))
+        .catch(err => reject(err))
     }),
 
     post: (path, query, payload) => new Promise((resolve, reject) => {
         fetch(getUrl(path), {
                 method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+                headers: headersConfig,
                 body: JSON.stringify(payload)
             })
             .then(res => res.json())

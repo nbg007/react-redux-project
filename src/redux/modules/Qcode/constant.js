@@ -1,1 +1,1 @@
-export const YOUR_CONSTANT = 'YOUR_CONSTANT'
+export const GET_QCODE_SUCCESS = 'GET_QCODE_SUCCESS'

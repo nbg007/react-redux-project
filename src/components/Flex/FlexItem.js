@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import styles from './flex.scss'
 
 class FlexItem extends Component {
     static propTypes = {
@@ -19,7 +18,7 @@ class FlexItem extends Component {
         }
 
         return(
-            <div style={itemStyle} className={className}>
+            <div style={itemStyle}>
                 {this.props.children}
             </div>
         )

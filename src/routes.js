@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import auth from './utils/auth'
+import { auth } from './utils'
 import {
     App,
     Login,
@@ -13,7 +13,7 @@ export default (
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="home" component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
-        <Route path="qcode" component={Qcode} />
+        <Route path="qcode" component={Qcode} onEnter={requireAuth} />
     </Route>
 )
 

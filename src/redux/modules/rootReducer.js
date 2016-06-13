@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import counter from './Counter/reducer'
-import login from './Login/reducer'
 import form from './Form/reducer'
+import login from './Login/reducer'
+import qcode from './Qcode/reducer'
 
 const rootReducer = combineReducers({
-    counter,
+    form,
     login,
-    form
+    qcode
 })
 
 export default rootReducer

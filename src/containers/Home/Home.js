@@ -6,17 +6,8 @@ import styles from './home.scss'
 
 class Home extends Component {
 
-    static contextTypes = {
-        router: PropTypes.object.isRequired
-    };
-
     componentWillMount() {
         this.menu = JSON.parse(localStorage.userInfo).menu
-        console.log(this.menu)
-    }
-
-    linkTo(url) {
-        this.context.router.replace(url)
     }
 
     render() {
