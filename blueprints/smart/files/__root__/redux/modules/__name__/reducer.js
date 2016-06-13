@@ -1,10 +1,10 @@
-export const initialState = {};
+import * as types from './constant'
 
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
     switch (action.type) {
         case 'condition':
-            return state;
+            return state
         default:
-            return state;
+            return state
     }
 }

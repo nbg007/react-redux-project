@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 class <%= pascalEntityName %> extends Component {
     static propTypes = {
@@ -10,14 +10,14 @@ class <%= pascalEntityName %> extends Component {
     };
 
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {
-        return(
+        return (
             <div></div>
         )
     }
 }
 
-export default <%= pascalEntityName %>;
+export default <%= pascalEntityName %>

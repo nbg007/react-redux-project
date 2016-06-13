@@ -20,7 +20,6 @@ class Counter extends Component {
     };
 
     render() {
-        console.log(this.props)
         const { counter, actions } = this.props
         return (
             <div className="main-app-container">

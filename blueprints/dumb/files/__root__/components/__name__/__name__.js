@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-export class <%= pascalEntityName %> extends React.Component {
+class <%= pascalEntityName %> extends Component {
     static propTypes = {
 
     };
@@ -16,5 +16,4 @@ export class <%= pascalEntityName %> extends React.Component {
     }
 }
 
-export default <%= pascalEntityName %>;
-
+export default <%= pascalEntityName %>

@@ -4,10 +4,9 @@ import { Link } from 'react-router'
 
 injectTapEventPlugin()
 
-function App({ children }) {
+function App({children}) {
     return (
         <div className="page-container">
-            <Link to="counter">Link</Link>
             {children}
         </div>
     )

@@ -1,16 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
+const APP_PATH = path.resolve(__dirname, 'src');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var autoprefixer = require('autoprefixer');
-var postcssImport = require('postcss-import');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
         app: './src/index',
         vendors: [
+            'babel-polyfill',
             'react',
             'react-dom',
+            'redux',
             'react-redux',
             'redux-thunk'
         ]
@@ -26,25 +27,15 @@ module.exports = {
             include: path.join(__dirname, 'src')
         }, {
             test: /\.(css|scss)$/,
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]!postcss-loader!sass-loader")
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]!autoprefixer!sass-loader")
         }, {
             test: /\.(woff|woff2|eot|ttf|svg)$/,
             exclude: /node_modules/,
             loader: 'url?limit=1024&name=fonts/[name].[ext]'
         }, {
             test: /\.(jpg|jpeg|gif|png)$/,
-            loader: 'file?name=/img/[name].[ext]'
+            loader: 'url?limit=4000&name=images/[name].[ext]'
         }]
-    },
-    postcss: function(webpack) {
-        return [
-            autoprefixer({
-                browsers: ['last 2 versions'],
-            }),
-            postcssImport({
-                addDependencyTo: webpack,
-            })
-        ]
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
@@ -60,6 +51,7 @@ module.exports = {
             inject: 'body',
             template: './src/index.html',
             showErrors: false,
+            favicon: path.resolve(APP_PATH, 'static', 'favicon.ico'),
             minify: {
                 collapseWhitespace: true,
                 removeComments: true
