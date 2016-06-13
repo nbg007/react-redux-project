@@ -18,7 +18,7 @@ class FlexItem extends Component {
         }
 
         return(
-            <div style={itemStyle}>
+            <div style={itemStyle} className={className}>
                 {this.props.children}
             </div>
         )
