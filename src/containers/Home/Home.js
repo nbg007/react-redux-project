@@ -1,25 +1,42 @@
 import React, { Component, PropTypes } from 'react'
-import { Input, Button } from '../../components'
+import { Link } from 'react-router'
+import { Flex } from '../../components'
+import { routeMap } from './routeMap'
+import styles from './home.scss'
 
 class Home extends Component {
-    static propTypes = {
 
+    static contextTypes = {
+        router: PropTypes.object.isRequired
     };
 
-    state = {
+    componentWillMount() {
+        this.menu = JSON.parse(localStorage.userInfo).menu
+        console.log(this.menu)
+    }
 
-    };
-
-    constructor(props) {
-        super(props)
+    linkTo(url) {
+        this.context.router.replace(url)
     }
 
     render() {
         return (
             <div>
-                <Input hintText="用户名" />
-                <Input hintText="密码" type="password" style={{border: '0px'}} />
-                <Button label="登录" fullWidth={true} />
+                <header className={styles.header}>
+                    随时喷
+                </header>
+                {this.menu.map((item, i) =>
+                    <Link key={i} to={routeMap[item.url]} className="no-style">
+                        <Flex className={styles.menu}>
+                            <Flex.Item flex={85}>
+                                {item.name}
+                            </Flex.Item>
+                            <Flex.Item flex={15} className={styles.menuIcon}>
+                                <i className="icon iconfont">&#xe601;</i>
+                            </Flex.Item>
+                        </Flex>
+                    </Link>
+                )}
             </div>
         )
     }

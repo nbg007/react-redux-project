@@ -8,3 +8,8 @@
     display: block;
     width: 100%;
 }
+
+a[class="no-style"] {
+    text-decoration: none;
+    color: inherit;
+}

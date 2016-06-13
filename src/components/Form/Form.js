@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import without from 'lodash.without'
 import * as actions from '../../redux/modules/Form/action'
+import Input from './Input'
+import SubmitButton from './SubmitButton'
 
 const noop = () => undefined
 
@@ -22,7 +24,7 @@ class Form extends Component {
 
     static childContextTypes = {
         update: PropTypes.func,
-        reset: PropTypes.func,
+        // reset: PropTypes.func,
         submit: PropTypes.func,
         values: PropTypes.object,
         registerValidation: PropTypes.func,
@@ -32,7 +34,7 @@ class Form extends Component {
     getChildContext() {
         return {
             update: this.props.update,
-            reset: this.props.reset,
+            // reset: this.props.reset,
             submit: this.submit,
             values: this.props.values,
             registerValidation: this.registerValidation,
@@ -43,6 +45,10 @@ class Form extends Component {
     static defaultProps = {
         onSubmit: noop
     };
+
+    static SubmitButton = SubmitButton;
+
+    static Input = Input;
 
     validations = [];
 
@@ -71,7 +77,7 @@ class Form extends Component {
     submit() {
         if (this.isFormValid(true)) {
             this.props.onSubmit(Object.assign({}, this.props.values))
-            this.props.reset()
+            // this.props.reset()
         }
     }
 

@@ -9,26 +9,42 @@ export function loginUser(username, password) {
                 password: md5(password)
             })
             .then(res => {
-                if (res.status === 200) {
-                    dispatch(LoginSuccess(res))
+                if (res.status === 200 && res.info) {
+                    setStorage(res.info)
+                    dispatch(LoginSuccess())
                 } else {
-                    dispatch(LoginRequest())
+                    dispatch(loginFailure('用户名或密码不正确'))
                 }
             })
-            .catch(err => dispatch(LoginRequest(err)))
+            .catch(err => dispatch(loginFailure(err)))
     }
 }
 
-function LoginRequest() {
+function loginFailure(err) {
     return {
         type: types.LOGIN_FAILURE,
         err
     }
 }
 
-function LoginSuccess(info) {
+function LoginSuccess() {
     return {
-        type: types.LOGIN_SUCCESS,
-        info
+        type: types.LOGIN_SUCCESS
     }
+}
+
+function setStorage(info) {
+    const userInfo = {
+        userTypeCode: info.userTypeCode,
+        menu: info.menu && info.menu[0].subdirectory
+    }
+
+    if (info.employee) {
+        userInfo.employee = info.employee
+    } else {
+        delete userInfo.employee
+    }
+
+    localStorage.token = info.token
+    localStorage.userInfo = JSON.stringify(userInfo)
 }
