@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('../static/fonts/iconfont.woff') format('woff'),
+    url('../static/fonts/iconfont.ttf') format('truetype'),
+    url('../static/fonts/iconfont.svg#iconfont') format('svg');
+}
+
+:global {
+    html {
+        -webkit-tap-highlight-color: rgba(255,255,255,0);
+        font-size: 100px;
+        font-size: calc(100vw/3.75);
+    }
+
+    body {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-overflow-scrolling: touch;
+        color: rgba(0,0,0,.87);
+    }
+
+    @import 'base';
+}

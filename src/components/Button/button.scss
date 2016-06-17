@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+@mixin baseButton() {
+    display: inline-block;
+    margin: 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+}
+
+.button {
+    font-size: 1.2em;
+    padding: .1rem .16rem;
+    letter-spacing: .5em;
+    color: #fff;
+    background-color: $primary;
+    @include baseButton();
+    &:active {
+        opacity: .8;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+    }
+    &:disabled,
+    &.disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: .6;
+    }
+}
+
+.fullWidth {
+    display: block;
+    width: 100%;
+    padding: .12rem .16rem;
+}
+
+.flatButton {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .870588);
+    background-color: transparent;
+    padding: 0.08rem 0.22rem;
+    @include baseButton();
+    &:active {
+        background-color: #f2f2f2;
+    }
+}
