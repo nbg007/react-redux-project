@@ -9,6 +9,11 @@ new WebpackDevServer(webpack(config), config.devServer)
             console.log(err);
         }
         console.log('Listening at localhost:' + config.port);
+<<<<<<< HEAD
         console.log('Opening your system browser...');
         open('http://localhost:' + config.port + '/webpack-dev-server/');
+=======
+        console.log('正在启动浏览器 🌍...');
+        open('http://localhost:' + config.port);
+>>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
     });

@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+.inputBox {
+    font-size: 1em;
+    position: relative;
+    width: 100%;
+    border-top: 1px solid $greyLine;
+    border-bottom: 1px solid $greyLine;
+    label {
+        position: absolute;
+        top: .18rem;
+        left: .12rem;
+        transition: 150ms ease-in-out all;
+        pointer-events: none;
+        color: #999;
+    }
+    & + & {
+        border-top: 0;
+    }
+}
+
+.input {
+    font-weight: normal;
+    width: 100%;
+    padding: .24rem .12rem .12rem;
+    color: $textColor;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    &:focus,
+    &:valid {
+        & ~ label {
+            font-size: .8em;
+            top: .08rem;
+        }
+    }
+}
+
+.errMsg {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: .12rem;
+    color: $redText;
+}

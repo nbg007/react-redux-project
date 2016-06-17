@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import 'babel-polyfill'
+import 'isomorphic-fetch'
+>>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'

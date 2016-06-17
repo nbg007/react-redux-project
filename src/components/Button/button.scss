@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+.button {
+    font-size: 1.2em;
+    display: inline-block;
+    margin: 0;
+    padding: .1rem .16rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    background-color: $primary;
+    letter-spacing: .5em;
+    &:active {
+        opacity: .8;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+    }
+    &:disabled,
+    &.disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: .6;
+    }
+}
+
+.fullWidth {
+    display: block;
+    width: 100%;
+    padding: .12rem .16rem;
+}

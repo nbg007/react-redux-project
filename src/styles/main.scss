@@ -6,6 +6,7 @@
 }
 
 :global {
+<<<<<<< HEAD
     $main-bg-color: #f1f2f0;
     $accent-blue: #37bbe4;
     $accent-gray: #e1e0dd;
@@ -19,6 +20,22 @@
         justify-content: center;
         font-family: 'Raleway', sans-serif;
     }
+=======
+    html {
+        -webkit-tap-highlight-color: rgba(255,255,255,0);
+        font-size: 100px;
+        font-size: calc(100vw/3.75);
+    }
+
+    body {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    @import 'base';
+
+>>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
     .iconfont {
         font-family: "iconfont" !important;
         font-size: inherit;
@@ -27,6 +44,7 @@
         -webkit-text-stroke-width: 0.2px;
         -moz-osx-font-smoothing: grayscale;
     }
+<<<<<<< HEAD
     .main-app-container {
         padding-top: 2em;
     }
@@ -80,4 +98,6 @@
             color: $accent-red;
         }
     }
+=======
+>>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
 }
