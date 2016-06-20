@@ -30,7 +30,6 @@ export function getLastBankAccount(accountId) {
         http
             .get(path, query)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     dispatch({
                         type: types.GET_LAST_SUCCESS,

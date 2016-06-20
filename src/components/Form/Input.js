@@ -24,7 +24,8 @@ export class Input extends Component {
 
     state = {
         errors: [],
-        inputHasValue: false
+        inputHasValue: false,
+        value: ''
     };
 
     constructor(props) {
@@ -37,6 +38,7 @@ export class Input extends Component {
         this.removeValidationFromContext = this.context.registerValidation(show =>
             this.isValid(show)
         )
+        // console.log(this.props.value)
     }
 
     componentWillUnmount() {
@@ -75,6 +77,7 @@ export class Input extends Component {
 
     onChange(e) {
         this.updateValue(e.target.value)
+        this.setState({ value: e.target.value })
     }
 
     render () {
@@ -95,6 +98,7 @@ export class Input extends Component {
                     onChange={this.onChange}
                     onBlur={this.onBlur}
                     pattern={pattern}
+                    value={this.state.value}
                 />
                 <label>{hintText}</label>
                 {this.state.errors.length ? (

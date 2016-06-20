@@ -39,14 +39,17 @@ class Select extends Component {
             this.isValid(show)
         )
 
-        //如果props有值，则更新redux中的state，然后把selectHasValue设置为true
+        // 如果props有值，则更新redux中的state，然后把selectHasValue设置为true
         const { defaultValue } = this.props
+        console.log(this.props)
         if (defaultValue) {
             this.updateValue(defaultValue)
-            this.setState({ selectHasValue: true })
+            this.setState({
+                selectHasValue: true,
+                value: defaultValue
+            })
         }
     }
-
 
     componentWillUnmount() {
         this.removeValidationFromContext()
@@ -89,7 +92,7 @@ class Select extends Component {
     }
 
     render () {
-        const { options, labelValue, defaultValue } = this.props
+        const { options, labelValue } = this.props
 
         return(
             <div className={styles.selectBox}>
@@ -97,7 +100,7 @@ class Select extends Component {
                     onChange={this.onChange}
                     onBlur={this.onBlur}
                     className={classnames(styles.select, {[styles.labelValue]: !this.state.selectHasValue})}
-                    value={this.state.value || defaultValue}
+                    value={this.state.value}
                 >
                     {labelValue && <option value="" disabled={this.state.selectHasValue}>{labelValue}</option>}
                     {options.map(item => <option value={item.value} key={item.value}>{item.name}</option>)}

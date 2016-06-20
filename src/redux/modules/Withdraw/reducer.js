@@ -1,7 +1,8 @@
 import * as types from './constant'
 
 const initState = {
-    bankInfo: []
+    bankInfo: [],
+    lastBankInfo: { id: '' }
 }
 
 export default function (state = initState, action) {
@@ -10,6 +11,11 @@ export default function (state = initState, action) {
         case types.GET_BANK_SUCCESS:
             return Object.assign({}, state, {
                 bankInfo: action.bankInfo
+            })
+
+        case types.GET_LAST_SUCCESS:
+            return Object.assign({}, state, {
+                lastBankInfo: action.lastBankInfo
             })
 
         default:

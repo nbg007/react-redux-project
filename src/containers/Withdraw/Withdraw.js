@@ -5,10 +5,15 @@ import * as actions from '../../redux/modules/Withdraw/action'
 
 @connect(
     state => ({
-        bankInfo: state.withdraw.bankInfo
+        bankInfo: state.withdraw.bankInfo,
+        lastBankInfo: state.withdraw.lastBankInfo
     })
 )
 class Withdraw extends Component {
+
+    state = {
+        lastBankInfo: {}
+    };
 
     constructor(props) {
         super(props)
@@ -24,17 +29,26 @@ class Withdraw extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        // console.log(nextProps)
+        if (nextProps.lastBankInfo) {
+            this.setState({
+                lastBankInfo: nextProps.lastBankInfo
+            })
+        }
+    }
+
     submit(data) {
-        console.log(data)
+        // console.log(data)
     }
 
     render() {
-        const { bankInfo } = this.props
+        const { bankInfo, lastBankInfo } = this.props
         const options = bankInfo.map(item => ({
             value: item.id,
             name: item.name
         }))
-
+        console.log(this.state.lastBankInfo.bankId)
         return (
             <div className="lightBlue-bg">
                 <div className="title">
@@ -45,7 +59,7 @@ class Withdraw extends Component {
                         validate={['required']}
                         name="bankId"
                         labelValue="请选择银行"
-                        // defaultValue="222"
+                        defaultValue={this.state.lastBankInfo.bankId}
                         options={options}
                     />
                     <Form.Input
@@ -53,6 +67,7 @@ class Withdraw extends Component {
                         name="number"
                         validate={['required', 'bankNum']}
                         pattern="\d*"
+                        value={lastBankInfo.number}
                     />
                     <Form.Input
                         hintText="持卡人"
