@@ -30,17 +30,24 @@ function getUrl(path, query) {
     return getServer() + path
 }
 
-const headersConfig = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': localStorage.token || ''
+function getHeaders() {
+    let headersConfig = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+
+    if (localStorage.token) {
+        headersConfig.Authorization = localStorage.token
+    }
+
+    return headersConfig
 }
 
 const http = {
     get: (path, query) => new Promise((resolve, reject) => {
         fetch(getUrl(path, query), {
                 method: 'GET',
-                headers: headersConfig
+                headers: getHeaders()
             })
             .then(res => res.json())
             .then(json => resolve(json))
@@ -50,7 +57,7 @@ const http = {
     post: (path, query, payload) => new Promise((resolve, reject) => {
         fetch(getUrl(path), {
                 method: 'POST',
-                headers: headersConfig,
+                headers: getHeaders(),
                 body: JSON.stringify(payload)
             })
             .then(res => res.json())
