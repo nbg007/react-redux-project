@@ -2,7 +2,9 @@ import * as types from './constant'
 
 const initState = {
     bankInfo: [],
-    lastBankInfo: { id: '' }
+    lastBankInfo: {},
+    accountId: '',
+    expenditureStatus: false
 }
 
 export default function (state = initState, action) {
@@ -16,6 +18,21 @@ export default function (state = initState, action) {
         case types.GET_LAST_SUCCESS:
             return Object.assign({}, state, {
                 lastBankInfo: action.lastBankInfo
+            })
+
+        case types.ADD_ACCOUNT_SUCCESS:
+            return Object.assign({}, state, {
+                accountId: action.accountId
+            })
+
+        case types.EXPENDITURE_SUCCESS:
+            return Object.assign({}, state, {
+                expenditureStatus: action.status
+            })
+
+        case types.EXPENDITURE_FAILURE:
+            return Object.assign({}, state, {
+                expenditureStatus: false
             })
 
         default:

@@ -41,7 +41,7 @@ class Select extends Component {
 
         // 如果props有值，则更新redux中的state，然后把selectHasValue设置为true
         const { defaultValue } = this.props
-        console.log(this.props)
+
         if (defaultValue) {
             this.updateValue(defaultValue)
             this.setState({

@@ -1,10 +1,11 @@
 import * as types from './constant'
 
-export function update(name, value) {
+export function update(name, value, formName) {
     return {
         type: types.FORM_UPDATE_VALUE,
         name,
-        value
+        value,
+        formName
     }
 }
 

@@ -63,7 +63,29 @@ const http = {
             .then(res => res.json())
             .then(json => resolve(json))
             .catch(err => reject(err))
+    }),
+
+    put: (path, query, payload) => new Promise((resolve, reject) => {
+        fetch(getUrl(path), {
+                method: 'PUT',
+                headers: getHeaders(),
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(json => resolve(json))
+            .catch(err => reject(err))
+    }),
+
+    delete: (path, query) => new Promise((resolve, reject) => {
+        fetch(getUrl(path, query), {
+                method: 'DELETE',
+                headers: getHeaders()
+            })
+            .then(res => res.json())
+            .then(json => resolve(json))
+            .catch(err => reject(err))
     })
+
 }
 
 export default http

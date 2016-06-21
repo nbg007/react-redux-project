@@ -43,3 +43,46 @@ export function getLastBankAccount(accountId) {
             })
     }
 }
+
+export function addBankAccount(payload) {
+    return dispatch => {
+        http
+            .post('bankAccount/create', undefined, payload)
+            .then(res => {
+                if (res.status === 200 && res.info) {
+                    dispatch({
+                        type: types.ADD_ACCOUNT_SUCCESS,
+                        accountId: res.info
+                    })
+                } else {
+                    dispatch({
+                        type: types.ADD_ACCOUNT_FAILURE,
+                        errMsg: res.errMsg
+                    })
+                }
+            })
+    }
+}
+
+export function expenditure(amount) {
+    return dispatch => {
+        http
+            .put('account/expenditure', undefined, { amount })
+            .then(res => {
+                if (res.status === 200 && res.info) {
+                    dispatch({
+                        type: types.EXPENDITURE_SUCCESS,
+                        status: res.info
+                    })
+                } else {
+                    resetExpenditureStatus()
+                }
+            })
+    }
+}
+
+export function resetExpenditureStatus() {
+    return {
+        type: types.EXPENDITURE_FAILURE
+    }
+}

@@ -9,7 +9,8 @@ export class Input extends Component {
         type: PropTypes.string,
         style: PropTypes.object,
         validate: PropTypes.arrayOf(PropTypes.string),
-        pattern: PropTypes.string
+        pattern: PropTypes.string,
+        defaultValue: PropTypes.string
     };
 
     static contextTypes = {
@@ -38,7 +39,17 @@ export class Input extends Component {
         this.removeValidationFromContext = this.context.registerValidation(show =>
             this.isValid(show)
         )
-        // console.log(this.props.value)
+
+        // 如果props有值，则更新redux中的state，然后把selectHasValue设置为true
+        const { defaultValue } = this.props
+
+        if (defaultValue) {
+            this.updateValue(defaultValue)
+            this.setState({
+                inputHasValue: true,
+                value: defaultValue
+            })
+        }
     }
 
     componentWillUnmount() {

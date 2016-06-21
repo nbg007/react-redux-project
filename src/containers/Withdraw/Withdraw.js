@@ -6,13 +6,15 @@ import * as actions from '../../redux/modules/Withdraw/action'
 @connect(
     state => ({
         bankInfo: state.withdraw.bankInfo,
-        lastBankInfo: state.withdraw.lastBankInfo
+        lastBankInfo: state.withdraw.lastBankInfo,
+        accountId: state.withdraw.accountId,
+        expenditureStatus: state.withdraw.expenditureStatus
     })
 )
 class Withdraw extends Component {
 
-    state = {
-        lastBankInfo: {}
+    static contextTypes = {
+        router: PropTypes.object.isRequired
     };
 
     constructor(props) {
@@ -21,25 +23,53 @@ class Withdraw extends Component {
     }
 
     componentDidMount() {
-        const { dispatch, location } = this.props
+        const { dispatch, location, resetExpenditureStatus } = this.props
         dispatch(actions.getBank())
+        dispatch(actions.resetExpenditureStatus())
 
-        if (location && location.query && location.query.accountId) {
+        if (location.query) {
             dispatch(actions.getLastBankAccount(location.query.accountId))
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log(nextProps)
-        if (nextProps.lastBankInfo) {
-            this.setState({
-                lastBankInfo: nextProps.lastBankInfo
-            })
+        // 如果添加账户成功, 提现
+        if (nextProps.accountId) {
+            this.props.dispatch(actions.expenditure(this.amount))
+        }
+
+        if (nextProps.expenditureStatus) {
+            notify(`提现${this.amount}元成功`, 'success', 1500, () =>
+                this.context.router.replace('user')
+            )
         }
     }
 
-    submit(data) {
-        // console.log(data)
+    addBankAccount(payload) {
+        this.props.dispatch(actions.addBankAccount(Object.assign({}, payload, {
+            accountId: this.props.location && this.props.location.query.accountId
+        })))
+    }
+
+    submit(payload) {
+        const { lastBankInfo, dispatch } = this.props
+
+        if (payload.amount) {
+            this.amount = payload.amount
+            delete payload.amount
+        }
+
+        for (let i in payload) {
+
+            // 资料改变或者之前没有记录，则新增一条记录
+            if (payload[i] !== lastBankInfo[i]) {
+                this.addBankAccount(payload)
+                return
+            }
+        }
+
+        // 否则直接提现
+        dispatch(actions.expenditure(this.amount))
     }
 
     render() {
@@ -48,44 +78,81 @@ class Withdraw extends Component {
             value: item.id,
             name: item.name
         }))
-        console.log(this.state.lastBankInfo.bankId)
+
         return (
             <div className="lightBlue-bg">
+                <Toast />
                 <div className="title">
                     <p>账户提现</p>
                 </div>
-                <Form onSubmit={this.submit}>
-                    <Form.Select
-                        validate={['required']}
-                        name="bankId"
-                        labelValue="请选择银行"
-                        defaultValue={this.state.lastBankInfo.bankId}
-                        options={options}
-                    />
-                    <Form.Input
-                        hintText="银行卡号"
-                        name="number"
-                        validate={['required', 'bankNum']}
-                        pattern="\d*"
-                        value={lastBankInfo.number}
-                    />
-                    <Form.Input
-                        hintText="持卡人"
-                        name="name"
-                        validate={['required']}
-                    />
-                    <Form.Input
-                        hintText="开户支行"
-                        name="bankBranchFullName"
-                    />
-                    <Form.Input
-                        hintText="提取金额"
-                        name="amount"
-                        type="number"
-                        validate={['required', 'withdrawAmount']}
-                    />
-                    <Form.SubmitButton label="提现" className="bottom-button" />
-                </Form>
+                {!lastBankInfo.id &&
+                    <Form onSubmit={this.submit} name="withdraw">
+                        <Form.Select
+                            validate={['required']}
+                            name="bankId"
+                            labelValue="请选择银行"
+                            options={options}
+                        />
+                        <Form.Input
+                            hintText="银行卡号"
+                            name="number"
+                            validate={['required', 'bankNum']}
+                            pattern="\d*"
+                        />
+                        <Form.Input
+                            hintText="持卡人"
+                            name="name"
+                            validate={['required']}
+                        />
+                        <Form.Input
+                            hintText="开户支行"
+                            name="bankBranchFullName"
+                        />
+                        <Form.Input
+                            hintText="提取金额"
+                            name="amount"
+                            type="number"
+                            validate={['required', 'withdrawAmount']}
+                        />
+                        <Form.SubmitButton label="提现" className="bottom-button" />
+                    </Form>
+                }
+                {lastBankInfo.id &&
+                    <Form onSubmit={this.submit} name="withdraw">
+                        <Form.Select
+                            validate={['required']}
+                            name="bankId"
+                            labelValue="请选择银行"
+                            defaultValue={lastBankInfo.bankId}
+                            options={options}
+                        />
+                        <Form.Input
+                            hintText="银行卡号"
+                            name="number"
+                            validate={['required', 'bankNum']}
+                            pattern="\d*"
+                            defaultValue={lastBankInfo.number}
+                        />
+                        <Form.Input
+                            hintText="持卡人"
+                            name="name"
+                            validate={['required']}
+                            defaultValue={lastBankInfo.name}
+                        />
+                        <Form.Input
+                            hintText="开户支行"
+                            name="bankBranchFullName"
+                            defaultValue={lastBankInfo.bankBranchFullName}
+                        />
+                        <Form.Input
+                            hintText="提取金额"
+                            name="amount"
+                            type="number"
+                            validate={['required', 'withdrawAmount']}
+                        />
+                        <Form.SubmitButton label="提现" className="bottom-button" />
+                    </Form>
+                }
             </div>
         )
     }
