@@ -1,12 +1,11 @@
 @import '../../styles/variables';
-.header {
-    padding: 0.16rem 0;
+.headline {
     text-align: center;
     color: $greyColor;
     position: relative;
-    background-image: url("../../static/common/breakLine.png");
-    background-position: 0 0;
-    background-size: 100%;
+    background-color: $lightBlue;
+    height: 0.48rem;
+    line-height: 0.48rem;
     &::before {
         content: '';
         width: 35%;
@@ -25,4 +24,11 @@
         right: 0;
         top: 50%;
     }
+}
+
+.breakLine {
+    background-image: url("../../static/common/breakLine.png");
+    background-position: 0 0;
+    background-size: 100%;
+    background-color: transparent;
 }

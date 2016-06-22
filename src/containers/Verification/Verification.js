@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { queryCoupon, resetCouponInfo, cancelCoupon } from '../../redux/modules/Verification/action'
-import { Form, Flex, Header, Toast, notify, Button } from '../../components'
+import { Form, Flex, Headline, Toast, notify, Button, Card } from '../../components'
 import styles from './verification.scss'
 
 @connect(
@@ -27,10 +27,6 @@ class Verification extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.verificationState.errMsg) {
-            notify(nextProps.verificationState.errMsg, 'warn')
-        }
-
         if(nextProps.verificationState.cancelCouponStatus) {
             notify('核销成功', 'success', 1500, () => {
                 this.context.router.replace('/home')
@@ -51,6 +47,18 @@ class Verification extends Component {
         }
     }
 
+    tipMsg() {
+        if (this.props.verificationState.isLoading) {
+            return '查询中，请稍后...'
+        } else if(this.props.verificationState.errMsg) {
+            return this.props.verificationState.errMsg
+        } else if(this.props.verificationState.info) {
+            return '消费券信息'
+        } else {
+            return '请输入编号'
+        }
+    }
+
     render() {
         const { info } = this.props.verificationState
 
@@ -67,9 +75,9 @@ class Verification extends Component {
                     />
                     <Form.SubmitButton label="查询" />
                 </Form>
-                {info ?
+                <Headline text={this.tipMsg()} className={styles.header} breakLine={true} />
+                {info &&
                     <div>
-                        <Header text="消费券信息" className={styles.header} />
                         <Flex className="list">
                             <Flex.Item flex={30}>
                                 消费券名称
@@ -83,7 +91,7 @@ class Verification extends Component {
                                 有效期
                             </Flex.Item>
                             <Flex.Item flex={70} className="text-right">
-                                {moment(info.endTime).format('YYYY.MM.DD HH:mm')}
+                                {moment(info.endTime).format('YYYY.MM.DD')}
                             </Flex.Item>
                         </Flex>
                         <Flex className="list">
@@ -106,8 +114,7 @@ class Verification extends Component {
                             </Flex.Item>
                         </Flex>
                         <Button label="核销" className={styles.cancelBtn} iconName="cancel" tap={this.cancelCoupon} />
-                    </div>:
-                    <Header text="暂无消费券信息" className={styles.header} />
+                    </div>
                 }
             </div>
         )

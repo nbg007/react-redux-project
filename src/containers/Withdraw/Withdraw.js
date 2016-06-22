@@ -74,6 +74,7 @@ class Withdraw extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { bankInfo, lastBankInfo } = this.props
         const options = bankInfo.map(item => ({
             value: item.id,
@@ -86,7 +87,7 @@ class Withdraw extends Component {
                 <div className="title">
                     <p>账户提现</p>
                 </div>
-                {!lastBankInfo &&
+                {!lastBankInfo.id &&
                     <Form onSubmit={this.submit} name="withdraw">
                         <Form.Select
                             validate={['required']}
@@ -118,7 +119,7 @@ class Withdraw extends Component {
                         <Form.SubmitButton label="提现" className="bottom-button" />
                     </Form>
                 }
-                {lastBankInfo &&
+                {lastBankInfo.id &&
                     <Form onSubmit={this.submit} name="withdraw">
                         <Form.Select
                             validate={['required']}

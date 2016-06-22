@@ -4,12 +4,18 @@ const initState = {
 
 }
 
-export default function (state = {}, action) {
+export default function (state = initState, action) {
     switch (action.type) {
+
+        case types.QUERY_COUPON_REQUEST:
+            return Object.assign({}, state, {
+                isLoading: true
+            })
 
         case types.QUERY_COUPON_SUCCESS:
             return Object.assign({}, state, {
                 info: action.memberCoupon,
+                isLoading: false,
                 errMsg: null
             })
 
@@ -17,6 +23,7 @@ export default function (state = {}, action) {
             return Object.assign({}, state, {
                 errMsg: action.errMsg,
                 lastFetched: action.lastFetched,
+                isLoading: false,
                 info: null
             })
 

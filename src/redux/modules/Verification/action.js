@@ -13,6 +13,8 @@ export function queryCoupon(couponCode) {
     }
 
     return dispatch => {
+        dispatch({ type: types.QUERY_COUPON_REQUEST })
+
         http
             .get('memberCoupon/queryMemberCouponListByMerchant', query)
             .then(res => {

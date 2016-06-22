@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import moment from 'moment'
 import { getCouponUsage } from '../../redux/modules/CouponUsage/action'
-import { CouponUsedCard } from '../../components'
+import { Card, Headline } from '../../components'
 import styles from './couponUsage.scss'
 
 @connect(
@@ -16,21 +17,22 @@ class CouponUsage extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
-            <div className={styles.container}>
-                {this.props.couponUsageInfo.length ? this.props.couponUsageInfo.map((item, i) =>
-                    <CouponUsedCard
-                        usageInfo={{
-                            couponName: item.couponName,
-                            couponCode: item.couponCode,
-                            useTime: item.useTime
-                        }}
-                        key={i}
-                    />
-                    ):
-                    <div>无订单信息</div>
-                }
+            <div>
+                <Headline text="核销记录" />
+                <div className={styles.container}>
+                    {this.props.couponUsageInfo.length ? this.props.couponUsageInfo.map((item, i) =>
+                        <Card key={i}>
+                            <p>{item.couponName}</p>
+                            <p>编号：{item.couponCode}</p>
+                            <p>消费时间：{moment(item.useTime).format('YYYY.MM.DD HH:mm')}</p>
+                        </Card>
+                        ):
+                        <Card>
+                            <p>无核销记录</p>
+                        </Card>
+                    }
+                </div>
             </div>
         )
     }

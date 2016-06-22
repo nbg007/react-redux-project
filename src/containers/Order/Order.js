@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { OrderCard, Header } from '../../components'
+import moment from 'moment'
+import { Card, Flex, Headline } from '../../components'
 import { getOrder } from '../../redux/modules/Order/action'
 import styles from './order.scss'
 import { fakeDB } from './fakeDB'
@@ -19,19 +20,26 @@ class Order extends Component {
     render() {
         return (
             <div>
-                {this.props.orderInfo.length ? this.props.orderInfo.map((item, i) =>
-                    <div className={styles.container} key={i}>
-                        <OrderCard
-                            orderInfo={{
-                                orderNum: item.orderNum,
-                                actualPrice: item.actualPrice,
-                                addTime: item.addTime,
-                                statusName: item.statusName
-                            }}
-                        />
-                    </div>):
-                    <Header text="无订单信息" />
-                }
+                <Headline text="订单信息" />
+                <div className={styles.container}>
+                    {this.props.orderInfo.length ? this.props.orderInfo.map((item, i) =>
+                        <Card key={i}>
+                            <Flex className={styles.ordercard}>
+                                <Flex.Item flex={80}>
+                                    <p>订单号：{item.orderNum}</p>
+                                    <p>{moment(item.addTime).format('YYYY.MM.DD HH:mm')}</p>
+                                </Flex.Item>
+                                <Flex.Item flex={20}>
+                                    <strong>¥{item.actualPrice}</strong>
+                                    <p className="secondary-text">{item.statusName}</p>
+                                </Flex.Item>
+                            </Flex>
+                        </Card>):
+                        <Card>
+                            <p>无订单信息</p>
+                        </Card>
+                    }
+                </div>
             </div>
         )
     }
