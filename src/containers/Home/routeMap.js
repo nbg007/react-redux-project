@@ -1,6 +1,6 @@
 export const routeMap = {
     merchantFindSalesOrder: 'order',
     merchantCarPackgeUrl: 'qcode',
-    merchantCouponList: 'couponList',
+    merchantCouponList: 'verification', //核销消费券
     merchantCouponUsage: 'couponUsage'
 }

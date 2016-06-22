@@ -7,7 +7,10 @@ import {
     Home,
     Qcode,
     User,
-    Withdraw
+    Withdraw,
+    Order,
+    Verification,
+    CouponUsage
 } from './containers'
 
 export default (
@@ -18,6 +21,9 @@ export default (
         <Route path="qcode" component={Qcode} onEnter={requireAuth} />
         <Route path="user" component={User} onEnter={requireAuth} />
         <Route path="withdraw" component={Withdraw} onEnter={requireAuth} />
+        <Route path="order" component={Order} onEnter={requireAuth} />
+        <Route path="verification" component={Verification} onEnter={requireAuth} />
+        <Route path="couponusage" component={CouponUsage} onEnter={requireAuth} />
     </Route>
 )
 

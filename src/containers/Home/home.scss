@@ -1,15 +1,11 @@
 @import '../../styles/variables';
 
-.header {
-    background-color: $secondary;
-    color: #fff;
-    text-align: center;
-    font-size: 20px;
-    padding: 0.25rem;
-}
-
 .menuIcon {
     text-align: right;
+    padding-right: 0.06rem;
+    i {
+        font-size: 12px;
+    }
 }
 
 .username {

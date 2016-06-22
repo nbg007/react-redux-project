@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+.header {
+    padding: 0.16rem 0;
+    text-align: center;
+    color: $greyColor;
+    position: relative;
+    background-image: url("../../static/common/breakLine.png");
+    background-position: 0 0;
+    background-size: 100%;
+    &::before {
+        content: '';
+        width: 35%;
+        height: 1px;
+        background-color: #c2d7d7;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+    &::after {
+        content: '';
+        width: 35%;
+        height: 1px;
+        background-color: #c2d7d7;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+}

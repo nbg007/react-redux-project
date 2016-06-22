@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { Form, Toast, notify } from '../../components'
-import styles from './login.scss'
 import img from '../../static/login/bg.jpg'
 import { loginUser } from '../../redux/modules/Login/action'
 
@@ -47,7 +45,7 @@ class Login extends Component {
                     <Form.Input
                         hintText="用户名"
                         name="username"
-                        validate={['required', 'maxLength']}
+                        validate={['required']}
                     />
                     <Form.Input
                         hintText="密码"

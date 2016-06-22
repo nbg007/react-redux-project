@@ -65,7 +65,7 @@ class User extends Component {
                 </div>
                 <Flex className="list">
                     <Flex.Item flex={50}>
-                        <Icon iconName="person" className={styles.labelIcon} color="#3F51B5" />
+                        <Icon iconName="user" className={styles.labelIcon} color="#3F51B5" />
                         账户名
                     </Flex.Item>
                     <Flex.Item flex={50} className="text-right">
@@ -79,14 +79,17 @@ class User extends Component {
                             提现
                         </Flex.Item>
                         <Flex.Item flex={50} className="text-right">
-                            <Icon iconName="jinlingyingcaiicon02" className="grey-text" />
+                            <Icon iconName="arrow" className="grey-text" />
                         </Flex.Item>
                     </Flex>
                 </Link>
                 <Flex className="list" tap={this.openModal}>
                     <Flex.Item flex={50}>
-                        <Icon iconName="084tuichu" className={styles.labelIcon} color="#F44336" />
+                        <Icon iconName="exit" className={styles.labelIcon} color="#F44336" />
                         退出登录
+                    </Flex.Item>
+                    <Flex.Item flex={50} className="text-right">
+                        <Icon iconName="arrow" className="grey-text" />
                     </Flex.Item>
                 </Flex>
                 <Modal>

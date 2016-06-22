@@ -1,16 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
+import Icon from '../Icon/Icon'
 import styles from './button.scss'
 
 class Button extends Component {
     static propTypes = {
         fullWidth: PropTypes.bool,
-        secondary: PropTypes.bool,
         label: PropTypes.string.isRequired,
         type: PropTypes.string,
         disabled: PropTypes.bool,
         tap: PropTypes.func,
-        className: PropTypes.string
+        className: PropTypes.string,
+        iconName: PropTypes.string
     };
 
     constructor(props) {
@@ -20,11 +21,11 @@ class Button extends Component {
     render () {
         const {
             fullWidth,
-            secondary,
             label,
             type,
             disabled,
             className,
+            iconName,
             tap = () => {}
         } = this.props
 
@@ -39,6 +40,7 @@ class Button extends Component {
                 onTouchTap={tap}
                 disabled={disabled}
             >
+                {iconName && <Icon iconName={iconName} />}
                 {label}
             </button>
         )

@@ -86,3 +86,15 @@ a[class='no-style'] {
 .lightBlue-bg {
     @include fullHeightBgc($lightBlue)
 }
+
+.small-text {
+    font-size: 80%;
+}
+
+.header {
+    background-color: $secondary;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 0.25rem;
+}

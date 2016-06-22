@@ -5,17 +5,18 @@ class Icon extends Component {
     static propTypes = {
         iconName: PropTypes.string.isRequired,
         className: PropTypes.string,
-        color: PropTypes.string
+        color: PropTypes.string,
+        fontSize: PropTypes.string
     };
 
     render () {
-        const { className, iconName, color } = this.props
+        const { className, iconName, color, fontSize } = this.props
         const iconClassName = `icon-${iconName}`
 
         return (
             <i
                 className={classnames('iconfont', iconClassName, className)}
-                style={{color}}
+                style={{color, fontSize}}
             />
         )
     }

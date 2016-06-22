@@ -59,12 +59,13 @@ class Withdraw extends Component {
             delete payload.amount
         }
 
-        for (let i in payload) {
-
-            // 资料改变或者之前没有记录，则新增一条记录
-            if (payload[i] !== lastBankInfo[i]) {
-                this.addBankAccount(payload)
-                return
+        if (lastBankInfo) {
+            for (let i in payload) {
+                // 资料改变或者之前没有记录，则新增一条记录
+                if (payload[i] !== lastBankInfo[i]) {
+                    this.addBankAccount(payload)
+                    return
+                }
             }
         }
 
@@ -85,7 +86,7 @@ class Withdraw extends Component {
                 <div className="title">
                     <p>账户提现</p>
                 </div>
-                {!lastBankInfo.id &&
+                {!lastBankInfo &&
                     <Form onSubmit={this.submit} name="withdraw">
                         <Form.Select
                             validate={['required']}
@@ -117,7 +118,7 @@ class Withdraw extends Component {
                         <Form.SubmitButton label="提现" className="bottom-button" />
                     </Form>
                 }
-                {lastBankInfo.id &&
+                {lastBankInfo &&
                     <Form onSubmit={this.submit} name="withdraw">
                         <Form.Select
                             validate={['required']}

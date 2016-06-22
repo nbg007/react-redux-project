@@ -2,7 +2,9 @@ import * as types from './constant'
 
 const initState = {
     bankInfo: [],
-    lastBankInfo: {},
+    lastBankInfo: {
+        id: ''
+    },
     accountId: '',
     expenditureStatus: false
 }
