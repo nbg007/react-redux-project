@@ -1,4 +1,5 @@
 import queryString from 'query-string'
+import { browserHistory } from 'react-router'
 
 process.env.NODE_ENV === 'production'
 
@@ -49,7 +50,14 @@ const http = {
                 method: 'GET',
                 headers: getHeaders()
             })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401) {
+                    delete localStorage.token
+                    browserHistory.replace('/login')
+                    return {}
+                }
+                return res.json()
+            })
             .then(json => resolve(json))
             .catch(err => reject(err))
     }),
@@ -60,7 +68,14 @@ const http = {
                 headers: getHeaders(),
                 body: JSON.stringify(payload)
             })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401) {
+                    delete localStorage.token
+                    browserHistory.replace('/login')
+                    return {}
+                }
+                return res.json()
+            })
             .then(json => resolve(json))
             .catch(err => reject(err))
     }),
@@ -71,7 +86,14 @@ const http = {
                 headers: getHeaders(),
                 body: JSON.stringify(payload)
             })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401) {
+                    delete localStorage.token
+                    browserHistory.replace('/login')
+                    return {}
+                }
+                return res.json()
+            })
             .then(json => resolve(json))
             .catch(err => reject(err))
     }),
@@ -81,7 +103,14 @@ const http = {
                 method: 'DELETE',
                 headers: getHeaders()
             })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401) {
+                    delete localStorage.token
+                    browserHistory.replace('/login')
+                    return {}
+                }
+                return res.json()
+            })
             .then(json => resolve(json))
             .catch(err => reject(err))
     })

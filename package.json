@@ -8,7 +8,7 @@
     "build": "npm run clean && npm run build:webpack",
     "start:local": "cross-env SERVER_ENV=local npm start",
     "start:pro": "cross-env SERVER_ENV=production npm start",
-    "start:dist": "anywhere -d dist -p 9086",
+    "start:dist": "anywhere -d dist -p 6001",
     "start": "node devServer.js",
     "lint": "eslint src"
   },

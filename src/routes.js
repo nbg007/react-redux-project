@@ -27,8 +27,11 @@ export default (
     </Route>
 )
 
-function requireAuth(nextState, replaceState) {
+function requireAuth(nextState, replace) {
     if (!auth.loginIn()) {
-        replaceState({ nextPathname: nextState.location.pathname }, '/login')
+        replace({
+            pathname: '/login',
+            state: { nextPathname: nextState.location.pathname }
+        })
     }
 }
