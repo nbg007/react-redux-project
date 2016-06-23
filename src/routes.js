@@ -29,9 +29,6 @@ export default (
 
 function requireAuth(nextState, replaceState) {
     if (!auth.loginIn()) {
-        replaceState({
-            pathname: '/login',
-            state: { nextPathname: nextState.location.pathname }
-        })
+        replaceState({ nextPathname: nextState.location.pathname }, '/login')
     }
 }
