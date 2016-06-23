@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Simple Redux Production
-
-=======
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
 ### 1.简介
 这是一个React, Redux, React Router, CSS Modules, Icon font, Webpack生成器。
 
@@ -52,12 +47,4 @@
 ```bash
     npm run build
 ```
-<<<<<<< HEAD
 
-### 5.todo
-1. 登录之后auth问题
-=======
-=======
-#ssp_partner
->>>>>>> 0f949cd66d0bf423cfc067cb137d70a19358cb92
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0

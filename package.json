@@ -6,46 +6,23 @@
     "clean": "rimraf dist",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-<<<<<<< HEAD
     "start:local": "cross-env SERVER_ENV=local npm start",
     "start:pro": "cross-env SERVER_ENV=production npm start",
     "start:dist": "anywhere -d dist -p 9086",
     "start": "node devServer.js",
-=======
     "dev": "NODE_ENV=development npm start",
     "start": "node devServer.js",
-<<<<<<< HEAD
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "lint": "eslint src"
   },
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.1",
-<<<<<<< HEAD
     "autoprefixer-loader": "^3.2.0",
-=======
-=======
-    "lint": "eslint src",
-    "start:dist": "anywhere -d dist -p 9088"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "autoprefixer-loader": "^3.2.0",
->>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "babel-core": "^6.3.15",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    "babel-polyfill": "^6.9.1",
-=======
->>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.0",
@@ -61,11 +38,6 @@
     "html-webpack-plugin": "^2.19.0",
     "node-sass": "^3.4.2",
     "open": "0.0.5",
-<<<<<<< HEAD
-=======
-    "postcss-import": "^8.1.2",
-    "postcss-loader": "^0.9.1",
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "rimraf": "^2.4.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
@@ -76,24 +48,13 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    "babel-eslint": "^6.0.4",
-=======
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "babel-polyfill": "^6.9.1",
     "classnames": "^2.2.5",
     "isomorphic-fetch": "^2.2.1",
     "lodash.without": "^4.2.0",
-<<<<<<< HEAD
     "moment": "^2.13.0",
     "qrcode.react": "^0.6.1",
     "query-string": "^4.2.2",
-=======
-    "qrcode.react": "^0.6.1",
->>>>>>> 40b89d3edaa758328c886e9511658c1ee5d15924
->>>>>>> 975b42c3ec6bdc12d2a5d8e27d769d540e4552c0
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.1.1",
