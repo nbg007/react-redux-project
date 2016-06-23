@@ -14,7 +14,12 @@ module.exports = {
             'react-router',
             'redux',
             'react-redux',
-            'redux-thunk'
+            'redux-thunk',
+            'isomorphic-fetch',
+            'moment',
+            'qrcode.react',
+            'query-string',
+            'react-tap-event-plugin'
         ]
     },
     output: {
