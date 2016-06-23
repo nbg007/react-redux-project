@@ -1,8 +1,6 @@
 import * as types from './constant'
 
-const initState = {
-
-}
+const initState = {}
 
 export default (state = initState, action) => {
     switch (action.type) {

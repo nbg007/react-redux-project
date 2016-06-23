@@ -74,7 +74,6 @@ class Withdraw extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { bankInfo, lastBankInfo } = this.props
         const options = bankInfo.map(item => ({
             value: item.id,
