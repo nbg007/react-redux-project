@@ -41,8 +41,8 @@ export function registSalesman(payload) {
         }
 }
 
-export function initRegistStatus() {
+export function initRegistSalesmanStatus() {
     return {
-        type: types.INIT_REGIST_STATUS
+        type: types.INIT_REGIST_SALESMAN_STATUS
     }
 }

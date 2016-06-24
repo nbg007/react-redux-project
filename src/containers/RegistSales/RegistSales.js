@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import pinyin from 'pinyin'
 import { Form, Headline, Toast, notify } from '../../components'
-import { getSalesmanType, registSalesman, initRegistStatus } from '../../redux/modules/RegistSales/action'
+import { getSalesmanType, registSalesman, initRegistSalesmanStatus } from '../../redux/modules/RegistSales/action'
 
 @connect(
     state => ({
@@ -28,7 +28,7 @@ class RegistSales extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(initRegistStatus())
+        this.props.dispatch(initRegistSalesmanStatus())
         this.props.dispatch(getSalesmanType())
     }
 
