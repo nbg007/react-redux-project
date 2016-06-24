@@ -5,9 +5,9 @@ import thunk from 'redux-thunk'
 const middleware = [thunk]
 
 const finalCreateStore = compose(
-  applyMiddleware(...middleware)
+    applyMiddleware(...middleware)
 )(createStore)
 
 module.exports = function configureStore(initialState) {
-  return finalCreateStore(rootReducer, initialState)
+    return finalCreateStore(rootReducer, initialState)
 }
