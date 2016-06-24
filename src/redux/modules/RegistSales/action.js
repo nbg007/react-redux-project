@@ -28,12 +28,12 @@ export function registSalesman(payload) {
                 .then(res => {
                     if (res.status === 200 && res.info) {
                         dispatch({
-                            type: types.REGIST_SALESMAN_TYPE_SUCCESS,
+                            type: types.REGIST_SALESMAN_SUCCESS,
                             registStatus: !!res.info
                         })
                     } else {
                         dispatch({
-                            type: types.REGIST_SALESMAN_TYPE_FAILURE,
+                            type: types.REGIST_SALESMAN_FAILURE,
                             errMsg: res.errMsg
                         })
                     }
