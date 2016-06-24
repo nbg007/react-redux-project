@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { Card, Flex, Headline } from '../../components'
 import { getOrder } from '../../redux/modules/Order/action'
-import styles from './order.scss'
-import { fakeDB } from './fakeDB'
+// import { fakeDB } from './fakeDB'
 
 @connect(
     state => ({
@@ -21,10 +20,10 @@ class Order extends Component {
         return (
             <div>
                 <Headline text="订单信息" />
-                <div className={styles.container}>
+                <div className="card-container">
                     {this.props.orderInfo.length ? this.props.orderInfo.map((item, i) =>
                         <Card key={i}>
-                            <Flex className={styles.ordercard}>
+                            <Flex>
                                 <Flex.Item flex={80}>
                                     <p>订单号：{item.orderNum}</p>
                                     <p>{moment(item.addTime).format('YYYY.MM.DD HH:mm')}</p>

@@ -6,7 +6,8 @@ class FlatButton extends Component {
     static propTypes = {
         primary: PropTypes.bool,
         secondary: PropTypes.bool,
-        tap: PropTypes.func
+        tap: PropTypes.func,
+        label: PropTypes.string.isRequired
     };
 
     static defaultProps = {

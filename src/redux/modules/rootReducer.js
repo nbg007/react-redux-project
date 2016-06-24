@@ -8,6 +8,8 @@ import withdraw from './Withdraw/reducer'
 import order from './Order/reducer'
 import verification from './Verification/reducer'
 import couponUsage from './CouponUsage/reducer'
+import registSales from './RegistSales/reducer'
+import childSalesman from './ChildSalesman/reducer'
 
 const rootReducer = combineReducers({
     form,
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
     withdraw,
     order,
     verification,
-    couponUsage
+    couponUsage,
+    registSales,
+    childSalesman
 })
 
 export default rootReducer

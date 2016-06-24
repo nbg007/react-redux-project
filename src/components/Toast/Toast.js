@@ -65,7 +65,7 @@ class Toast extends Component {
                 styles = Object.assign({}, baseStyle, errorStyle)
                 break
 
-            case 'warning':
+            case 'warn':
                 const warningStyle = {
                     backgroundColor: colorWarning
                 }

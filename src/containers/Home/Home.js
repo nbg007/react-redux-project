@@ -8,6 +8,7 @@ class Home extends Component {
 
     componentWillMount() {
         this.userInfo = JSON.parse(localStorage.userInfo)
+        // console.log(this.userInfo.menu)
     }
 
     render() {
@@ -28,7 +29,7 @@ class Home extends Component {
                     </Flex>
                 </Link>
                 {this.userInfo.menu.map((item, i) =>
-                    <Link key={i} to={routeMap[item.url]} className="no-style">
+                    <Link key={i} to={routeMap[item.url] || 'home'} className="no-style">
                         <Flex className="list">
                             <Flex.Item flex={50}>
                                 {item.name}

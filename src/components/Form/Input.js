@@ -10,7 +10,10 @@ export class Input extends Component {
         style: PropTypes.object,
         validate: PropTypes.arrayOf(PropTypes.string),
         pattern: PropTypes.string,
-        defaultValue: PropTypes.string
+        defaultValue: PropTypes.string,
+        onBlur: PropTypes.func,
+        value: PropTypes.string,
+        readOnly: PropTypes.bool
     };
 
     static contextTypes = {
@@ -20,7 +23,8 @@ export class Input extends Component {
     };
 
     static defaultProps = {
-        validate: []
+        validate: [],
+        readOnly: false
     };
 
     state = {
@@ -48,6 +52,16 @@ export class Input extends Component {
             this.setState({
                 inputHasValue: true,
                 value: defaultValue
+            })
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.value) {
+            // this.updateValue(nextProps.value)
+            this.setState({
+                value: nextProps.value,
+                inputHasValue: true
             })
         }
     }
@@ -84,6 +98,9 @@ export class Input extends Component {
             this.setState({ inputHasValue: true })
         }
         this.isValid(true)
+        if (this.props.onBlur) {
+            this.props.onBlur(e)
+        }
     }
 
     onChange(e) {
@@ -96,7 +113,8 @@ export class Input extends Component {
             hintText,
             type,
             style,
-            pattern
+            pattern,
+            readOnly
         } = this.props
 
         return (
@@ -110,6 +128,7 @@ export class Input extends Component {
                     onBlur={this.onBlur}
                     pattern={pattern}
                     value={this.state.value}
+                    readOnly={readOnly}
                 />
                 <label>{hintText}</label>
                 {this.state.errors.length ? (

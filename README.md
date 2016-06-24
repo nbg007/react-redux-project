@@ -2,11 +2,12 @@
 这是一个React, Redux, React Router, CSS Modules, Icon font, Webpack生成器。
 
 ### 2.使用
-1. git clone git@git.oschina.net:yangmingyuan/simple-redux-starter.git
-2. npm install
-3. npm start
-4. rm -rf .git
-5. git remote add origin [你的git地址]
+```bash
+    npm install
+    npm start #dev服务器地址
+    npm run start:local #local服务器地址
+    npm run start:pro #pro服务器地址
+```
 
 ### 3.项目结构
 ```
@@ -29,8 +30,8 @@
 │   ├── index.js                 # JS入口
 │   ├── routes.js                # react-router配置
 │── devServer.js                 # 开发环境启动文件
-│── webpack.config.js            # Webpack开发环境配置文件
-└── webpack.config.prod.js       # Webpack生产环境配置文件
+│── webpack.config.js            # webpack开发环境配置文件
+└── webpack.config.prod.js       # webpack生产环境配置文件
 ```
 
 ### 4.开发与部署
@@ -48,3 +49,5 @@
     npm run build
 ```
 
+### 5.第三方依赖
+1. [pinyin](https://github.com/hotoo/pinyin)

@@ -11,7 +11,6 @@
     "start:dist": "anywhere -d dist -p 6001",
     "start": "node devServer.js",
     "dev": "NODE_ENV=development npm start",
-    "start": "node devServer.js",
     "lint": "eslint src"
   },
   "license": "MIT",
@@ -53,6 +52,7 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash.without": "^4.2.0",
     "moment": "^2.13.0",
+    "pinyin": "^2.7.3",
     "qrcode.react": "^0.6.1",
     "query-string": "^4.2.2",
     "react": "^15.1.0",
