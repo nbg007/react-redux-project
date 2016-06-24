@@ -1,30 +1,30 @@
 import * as types from './constant'
 
 const initState = {
-    salesmanType: [],
+    merchantType: [],
     registStatus: false
 }
 
 export default function (state = initState, action) {
     switch (action.type) {
 
-        case types.GET_SALESMAN_TYPE_SUCCESS:
+        case types.GET_MERCHANT_TYPE_SUCCESS:
             return Object.assign({}, state, {
-                salesmanType: action.salesmanType
+                merchantType: action.merchantType
             })
 
-        case types.REGIST_SALESMAN_SUCCESS:
+        case types.REGIST_MERCHANT_SUCCESS:
             return Object.assign({}, state, {
                 registStatus: action.registStatus
             })
 
-        case types.REGIST_SALESMAN_FAILURE:
+        case types.REGIST_MERCHANT_FAILURE:
             return Object.assign({}, state, {
                 registErrMsg: action.errMsg,
                 registStatus: false
             })
 
-        case types.INIT_REGIST_SALESMAN_STATUS:
+        case types.INIT_REGIST_MERCHANT_STATUS:
             return Object.assign({}, state, {
                 registStatus: initState.registStatus
             })

@@ -10,6 +10,8 @@ import verification from './Verification/reducer'
 import couponUsage from './CouponUsage/reducer'
 import registSales from './RegistSales/reducer'
 import childSalesman from './ChildSalesman/reducer'
+import registMerchant from './RegistMerchant/reducer'
+import childMerchant from './ChildMerchant/reducer'
 
 const rootReducer = combineReducers({
     form,
@@ -22,7 +24,9 @@ const rootReducer = combineReducers({
     verification,
     couponUsage,
     registSales,
-    childSalesman
+    childSalesman,
+    registMerchant,
+    childMerchant
 })
 
 export default rootReducer

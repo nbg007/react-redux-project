@@ -2,29 +2,29 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { Card, Flex, Headline } from '../../components'
-import { getSalesmanInfo } from '../../redux/modules/ChildSalesman/action'
+import { getMerchantInfo } from '../../redux/modules/ChildMerchant/action'
 
 @connect(
     state => ({
-        salesmanInfo: state.childSalesman.salesmanInfo
+        merchantInfo: state.childMerchant.merchantInfo
     })
 )
-class ChildSalesman extends Component {
+class ChildMerchant extends Component {
 
     componentDidMount() {
-        this.props.dispatch(getSalesmanInfo())
+        this.props.dispatch(getMerchantInfo())
     }
 
     render() {
         return (
             <div>
-                <Headline text="二级业务员信息" />
+                <Headline text="二级商户信息" />
                 <div className="card-container">
-                    {this.props.salesmanInfo.length ? this.props.salesmanInfo.map((item, i) =>
+                    {this.props.merchantInfo.length ? this.props.merchantInfo.map((item, i) =>
                         <Card key={i}>
                             <Flex>
                                 <Flex.Item flex={50}>
-                                    <p>姓名：{item.realname}</p>
+                                    <p>商户名：{item.channelName}</p>
                                     <p>注册时间：{moment(item.addTime).format('YYYY.MM.DD')}</p>
                                 </Flex.Item>
                                 <Flex.Item flex={50}>
@@ -34,7 +34,7 @@ class ChildSalesman extends Component {
                             </Flex>
                         </Card>):
                         <Card>
-                            <p>无业务员信息</p>
+                            <p>无级商户信息</p>
                         </Card>
                     }
                 </div>
@@ -43,4 +43,4 @@ class ChildSalesman extends Component {
     }
 }
 
-export default ChildSalesman
+export default ChildMerchant

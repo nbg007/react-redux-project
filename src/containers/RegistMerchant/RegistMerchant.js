@@ -2,17 +2,16 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import pinyin from 'pinyin'
 import { Form, Headline, Toast, notify } from '../../components'
-import { getSalesmanType, registSalesman, initRegistStatus } from '../../redux/modules/RegistSales/action'
+import { getMerchantType, registMerchant, initRegistMerchantStatus } from '../../redux/modules/RegistMerchant/action'
 
 @connect(
     state => ({
-        salesmanType: state.registSales.salesmanType,
-        registStatus: state.registSales.registStatus,
-        registErrMsg: state.registSales.registErrMsg
+        merchantType: state.registMerchant.merchantType,
+        registStatus: state.registMerchant.registStatus,
+        registErrMsg: state.registMerchant.registErrMsg
     })
 )
-class RegistSales extends Component {
-
+class RegistMerchant extends Component {
     static contextTypes = {
         router: PropTypes.object.isRequired
     };
@@ -28,8 +27,8 @@ class RegistSales extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(initRegistStatus())
-        this.props.dispatch(getSalesmanType())
+        this.props.dispatch(initRegistMerchantStatus())
+        this.props.dispatch(getMerchantType())
     }
 
     componentWillReceiveProps(nextProps) {
@@ -45,13 +44,6 @@ class RegistSales extends Component {
         }
     }
 
-    submit(data) {
-        this.props.dispatch(registSalesman({
-            ...data,
-            username: this.state.username
-        }))
-    }
-
     getUserName(e) {
         const username = pinyin(e.target.value, {
             style: pinyin.STYLE_NORMAL
@@ -59,9 +51,16 @@ class RegistSales extends Component {
         this.setState({ username })
     }
 
+    submit(data) {
+        this.props.dispatch(registMerchant({
+            ...data,
+            username: this.state.username
+        }))
+    }
+
     render() {
-        const { salesmanType } = this.props
-        const options = salesmanType.map(item => ({
+        const { merchantType } = this.props
+        const options = merchantType.map(item => ({
             value: item.id,
             name: item.name
         }))
@@ -69,16 +68,16 @@ class RegistSales extends Component {
         return (
             <div className="lightBlue-bg">
                 <Toast />
-                <Headline text="注册二级业务员" />
+                <Headline text="注册二级商户" />
                 <Form onSubmit={this.submit}>
                     <Form.Input
-                        hintText="姓名"
+                        hintText="商户名"
                         name="realname"
                         validate={['required']}
                         onBlur={this.getUserName}
                     />
                     <Form.Input
-                        hintText="姓名全拼"
+                        hintText="商户全拼"
                         name="username"
                         value={this.state.username}
                         readOnly={true}
@@ -92,7 +91,7 @@ class RegistSales extends Component {
                     <Form.Select
                         validate={['required']}
                         name="businessTypeId"
-                        labelValue="业务员类型"
+                        labelValue="商户类型"
                         options={options}
                     />
                     <Form.SubmitButton label="注册" className="bottom-button" />
@@ -102,4 +101,4 @@ class RegistSales extends Component {
     }
 }
 
-export default RegistSales
+export default RegistMerchant

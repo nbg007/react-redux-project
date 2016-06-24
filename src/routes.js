@@ -12,7 +12,9 @@ import {
     Verification,
     CouponUsage,
     RegistSales,
-    ChildSalesman
+    ChildSalesman,
+    RegistMerchant,
+    ChildMerchant
 } from './containers'
 
 export default (
@@ -28,6 +30,8 @@ export default (
         <Route path="couponusage" component={CouponUsage} onEnter={requireAuth} />
         <Route path="registSales" component={RegistSales} onEnter={requireAuth} />
         <Route path="childSalesman" component={ChildSalesman} onEnter={requireAuth} />
+        <Route path="registMerchant" component={RegistMerchant} onEnter={requireAuth} />
+        <Route path="childMerchant" component={ChildMerchant} onEnter={requireAuth} />
     </Route>
 )
 
