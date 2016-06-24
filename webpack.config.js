@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 
@@ -6,6 +7,10 @@ const ROOT_PATH = path.resolve(__dirname);
 const BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 const APP_PATH = path.resolve(ROOT_PATH, 'src');
 const PORT = 3050;
+const includePaths = [
+    fs.realpathSync(__dirname + '/src'),
+    fs.realpathSync(__dirname + '/node_modules/pinyin/lib'),
+];
 
 module.exports = {
     port: PORT,
@@ -41,7 +46,7 @@ module.exports = {
         }, {
             test: /\.jsx?$/,
             loader: 'babel',
-            include: APP_PATH
+            include: includePaths
         }, {
             test: /\.(woff|woff2|eot|ttf|svg)$/,
             exclude: /node_modules/,

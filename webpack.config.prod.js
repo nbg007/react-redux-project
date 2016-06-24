@@ -1,8 +1,13 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const APP_PATH = path.resolve(__dirname, 'src');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlwebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlwebpackPlugin = require('html-webpack-plugin');
+const includePaths = [
+    fs.realpathSync(__dirname + '/src'),
+    fs.realpathSync(__dirname + '/node_modules/pinyin/lib'),
+];
 
 module.exports = {
     entry: {
@@ -28,9 +33,9 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.js$/,
+            test: /\.jsx?$/,
             loaders: ['babel'],
-            include: path.join(__dirname, 'src')
+            include: includePaths
         }, {
             test: /\.(css|scss)$/,
             loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]!autoprefixer!sass-loader")
