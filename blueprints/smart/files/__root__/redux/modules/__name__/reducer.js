@@ -1,10 +1,16 @@
 import * as types from './constant'
 
-export default function (state = {}, action) {
+const initState = {
+
+}
+
+export default function (state = initState, action) {
     switch (action.type) {
 
         case types.YOUR_CONSTANT:
-            return state
+            return Object.assign({}, state, {
+                info: action.info
+            })
 
         default:
             return state
