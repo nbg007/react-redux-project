@@ -56,7 +56,7 @@ module.exports = {
             inject: 'body',
             template: './src/index.html',
             favicon: path.resolve(APP_PATH, 'static', 'favicon.ico'),
-            showErrors: false
+            showErrors: true
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
