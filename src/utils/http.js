@@ -1,8 +1,6 @@
 import queryString from 'query-string'
 import { browserHistory } from 'react-router'
 
-process.env.NODE_ENV === 'production'
-
 function getServer() {
     switch (process.env.SERVER_ENV) {
 

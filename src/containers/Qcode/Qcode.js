@@ -10,13 +10,6 @@ import styles from './qcode.scss'
     })
 )
 class Qcode extends Component {
-    static propTypes = {
-
-    };
-
-    state = {
-
-    };
 
     constructor(props) {
         super(props)

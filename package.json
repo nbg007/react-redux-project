@@ -11,8 +11,7 @@
     "start:dist": "anywhere -d dist -p 6001",
     "start": "node devServer.js",
     "dev": "NODE_ENV=development npm start",
-    "lint": "eslint src",
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "lint": "eslint src"
   },
   "license": "MIT",
   "devDependencies": {
@@ -36,7 +35,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.19.0",
-    "mocha": "^2.5.3",
     "node-sass": "^3.4.2",
     "open": "0.0.5",
     "rimraf": "^2.4.3",
