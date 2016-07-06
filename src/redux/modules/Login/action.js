@@ -34,9 +34,14 @@ function LoginSuccess() {
 }
 
 function setStorage(info, username) {
+    const menuArr = info.menu.filter(item => item.directory === '业务员管理' || item.directory === '商户管理')
+    const menu = menuArr.length > 1 ?
+        menuArr.reduce((a, b) => a.subdirectory.concat(b.subdirectory)) :
+        menuArr[0].subdirectory
+
     const userInfo = {
         userTypeCode: info.userTypeCode,
-        menu: info.menu && info.menu[0].subdirectory,
+        menu,
         username
     }
 

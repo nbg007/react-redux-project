@@ -8,7 +8,7 @@ class Home extends Component {
 
     componentWillMount() {
         this.userInfo = JSON.parse(localStorage.userInfo)
-        // console.log(this.userInfo.menu)
+        // console.log(this.userInfo)
     }
 
     render() {
