@@ -12,7 +12,7 @@ export function bankNum(value) {
 
 export function withdrawAmount(value) {
     const minAmount = 100 // 至少提现金额
-    return value && value < minAmount ? ['提现金额填写错误'] : []
+    return value && value < minAmount ? ['提现金额至少为100元'] : []
 }
 
 export function mobile(value) {

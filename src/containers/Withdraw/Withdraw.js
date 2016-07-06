@@ -8,7 +8,8 @@ import * as actions from '../../redux/modules/Withdraw/action'
         bankInfo: state.withdraw.bankInfo,
         lastBankInfo: state.withdraw.lastBankInfo,
         accountId: state.withdraw.accountId,
-        expenditureStatus: state.withdraw.expenditureStatus
+        expenditureStatus: state.withdraw.expenditureStatus,
+        balance: state.user.balance
     })
 )
 class Withdraw extends Component {
@@ -52,11 +53,16 @@ class Withdraw extends Component {
     }
 
     submit(payload) {
-        const { lastBankInfo, dispatch } = this.props
+        const { lastBankInfo, dispatch, balance } = this.props
 
         if (payload.amount) {
             this.amount = payload.amount
             delete payload.amount
+        }
+
+        if (this.amount > balance) {
+            notify('余额不足', 'error')
+            return
         }
 
         if (lastBankInfo) {
