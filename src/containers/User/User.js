@@ -45,6 +45,7 @@ class User extends Component {
 
     handleConfirm() {
         delete localStorage.token
+        this.props.dispatch(modalActions.closeModal())
         this.context.router.replace('login')
     }
 
