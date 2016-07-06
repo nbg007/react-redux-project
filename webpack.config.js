@@ -42,7 +42,7 @@ module.exports = {
             loader: 'style!css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!autoprefixer!sass'
         }, {
             test: /\.(jpg|jpeg|gif|png)$/,
-            loader: 'url?limit=4000&name=images/[name].[ext]'
+            loader: 'url?limit=4000&name=images/[name].[hash:base64:5].[ext]'
         }, {
             test: /\.jsx?$/,
             loader: 'babel',
@@ -50,7 +50,7 @@ module.exports = {
         }, {
             test: /\.(woff|woff2|eot|ttf|svg)$/,
             exclude: /node_modules/,
-            loader: 'url?limit=4000&name=images/[name].[hash:base64:5].[ext]'
+            loader: 'url?limit=1024&name=fonts/[name].[ext]'
         }]
     },
     plugins: [
