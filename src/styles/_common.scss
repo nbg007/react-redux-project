@@ -1,0 +1,113 @@
+@import './variables.scss';
+@mixin fullHeightBgc($color) {
+    background-color: $color;
+    min-height: 100vh;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+.img-block {
+    display: block;
+    width: 100%;
+}
+
+a[class='no-style'] {
+    text-decoration: none;
+    color: inherit;
+}
+
+.primary-text {
+    color: $primary;
+}
+
+.secondary-text {
+    color: $secondary;
+}
+
+.grey-text {
+    color: $greyColor;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.list {
+    padding: .2rem .12rem;
+    color: #11181d;
+    border-bottom: 1px solid $greyLine;
+}
+
+.title {
+    background-color: $lightBlue;
+    padding: 0.16rem 0;
+    text-align: center;
+    color: $greyColor;
+    position: relative;
+    &::before {
+        content: '';
+        width: 35%;
+        height: 1px;
+        background-color: #c2d7d7;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+    &::after {
+        content: '';
+        width: 35%;
+        height: 1px;
+        background-color: #c2d7d7;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+}
+
+.bottom-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.lightBlue-bg {
+    @include fullHeightBgc($lightBlue)
+}
+
+.small-text {
+    font-size: 80%;
+}
+
+.header {
+    background-color: $secondary;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 0.25rem;
+}
+
+.container {
+    padding-left: 0.12rem;
+    padding-right: 0.12rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-container {
+    padding: 0.12rem;
+    background-color: $lightBlue;
+    min-height: calc(100vh - 0.48rem);
+}
