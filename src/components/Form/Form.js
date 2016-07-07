@@ -20,7 +20,8 @@ class Form extends Component {
         values: PropTypes.object,
         update: PropTypes.func,
         reset: PropTypes.func,
-        onSubmit: PropTypes.func
+        onSubmit: PropTypes.func,
+        shouldReset: PropTypes.bool
     };
 
     static childContextTypes = {
@@ -29,7 +30,7 @@ class Form extends Component {
         submit: PropTypes.func,
         values: PropTypes.object,
         registerValidation: PropTypes.func,
-        isFormValid: PropTypes.func,
+        isFormValid: PropTypes.func
     };
 
     getChildContext() {
@@ -62,6 +63,10 @@ class Form extends Component {
         this.submit = ::this.submit
     }
 
+    componentWillUnmount() {
+        this.props.reset()
+    }
+
     registerValidation(isValidFunc) {
         this.validations = [...this.validations, isValidFunc]
         return this.removeValidation.bind(this, isValidFunc)
@@ -81,7 +86,7 @@ class Form extends Component {
         e.preventDefault()
         if (this.isFormValid(true)) {
             this.props.onSubmit(Object.assign({}, this.props.values))
-            this.props.reset()
+            // this.props.reset()
         }
     }
 
