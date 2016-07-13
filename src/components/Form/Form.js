@@ -20,8 +20,7 @@ class Form extends Component {
         values: PropTypes.object,
         update: PropTypes.func,
         reset: PropTypes.func,
-        onSubmit: PropTypes.func,
-        shouldReset: PropTypes.bool
+        onSubmit: PropTypes.func
     };
 
     static childContextTypes = {
@@ -86,7 +85,6 @@ class Form extends Component {
         e.preventDefault()
         if (this.isFormValid(true)) {
             this.props.onSubmit(Object.assign({}, this.props.values))
-            // this.props.reset()
         }
     }
 

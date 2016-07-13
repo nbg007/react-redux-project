@@ -11,10 +11,6 @@ import styles from './qcode.scss'
 )
 class Qcode extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
         this.props.dispatch(getQcode())
     }

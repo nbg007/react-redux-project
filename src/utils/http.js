@@ -12,7 +12,6 @@ function getServer() {
 
         default:
             return 'http://119.29.19.250:3000/'
-
     }
 }
 
